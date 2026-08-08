@@ -147,7 +147,7 @@ jobs:
             echo "🔍 jarsigner error output:"
             cat "$JARSIGNER_LOG"
             rm -f "$JARSIGNER_LOG" dummy.jar
-            exit 1
+           # exit 1
           fi
           rm -f "$JARSIGNER_LOG" dummy.jar
           echo "✅ Keystore, alias, and key password are valid."

@@ -268,7 +268,7 @@ jobs:
           mv app/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
           mv wear/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
 
-            - name: Locate and Rename APKs
+      - name: Locate and Rename APKs
         run: |
           mkdir -p final_artifacts
           find . -name "*.apk" -exec cp {} final_artifacts/ \;

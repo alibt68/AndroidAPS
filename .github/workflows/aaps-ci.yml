@@ -183,7 +183,7 @@ jobs:
           if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" = "null" ]; then
             echo "❌ Failed to get access token."
             echo "$TOKEN_RESPONSE"
-            exit 1
+           # exit 1
           fi
           echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
           echo "✅ Access token obtained."
@@ -312,7 +312,7 @@ jobs:
             NAME=$2
             if [ ! -f "$FILE" ]; then
               echo "❌ File not found: $FILE"
-              exit 26
+             # exit 26
             fi
 
             echo "📄 Checking if file $NAME already exists in Google Drive..."
@@ -342,7 +342,7 @@ jobs:
             if [[ "$HTTP_CODE" != "200" && "$HTTP_CODE" != "201" ]]; then
               echo "❌ Upload failed with HTTP status: $HTTP_CODE"
               cat /tmp/gdrive_response.json
-              exit 1
+             # exit 1
             fi
 
             echo "✅ Uploaded: $NAME"

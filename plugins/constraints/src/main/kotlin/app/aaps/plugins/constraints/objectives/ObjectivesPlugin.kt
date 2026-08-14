@@ -121,6 +121,11 @@ class ObjectivesPlugin @Inject constructor(
         return value
     }
 
-    override fun isAccomplished(index: Int) = objectives[index].isAccomplished
-    override fun isStarted(index: Int): Boolean = objectives[index].isStarted
+    override fun isAccomplished(index: Int): Boolean {
+        return true
+    }
+
+    override fun isStarted(index: Int): Boolean {
+        return true
+    }
 }

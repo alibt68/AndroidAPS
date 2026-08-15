@@ -252,7 +252,7 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-
+        
       - name: Build APKs
         run: |
               ./gradlew :app:assemble${{ env.BUILD_VARIANT }} :wear:assemble${{ env.BUILD_VARIANT }} \
@@ -261,7 +261,11 @@ jobs:
               -Dkotlin.compiler.execution.strategy="in-process" \
               -Dorg.gradle.daemon=true \
               -Dorg.gradle.workers.max=8 \
-              -Dorg.gradle.caching=true
+              -Dorg.gradle.caching=true \
+              -Pandroid.injected.signing.store.file="$HOME/.android/debug.keystore" \
+              -Pandroid.injected.signing.store.password="android" \
+              -Pandroid.injected.signing.key.alias="androiddebugkey" \
+              -Pandroid.injected.signing.key.password="android" 
 
       - name: Rename APKs with version
         run: |

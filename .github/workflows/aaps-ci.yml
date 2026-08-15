@@ -253,10 +253,10 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         
-      - name: Generate Shared Debug Keystore
+      - name: Restore Permanent Debug Keystore
         run: |
           mkdir -p $HOME/.android
-          keytool -genkey -v -keystore $HOME/.android/debug.keystore -storepass android -keypass android -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=AndroidDebug,O=Android,C=US"
+          echo "${{ secrets.PERMANENT_DEBUG_KEY }}" | base64 --decode > $HOME/.android/debug.pfx
 
       - name: Build APKs
         run: |
@@ -267,10 +267,11 @@ jobs:
               -Dorg.gradle.daemon=true \
               -Dorg.gradle.workers.max=8 \
               -Dorg.gradle.caching=true \
-              -Pandroid.injected.signing.store.file="$HOME/.android/debug.keystore" \
+              -Pandroid.injected.signing.store.file="$HOME/.android/debug.pfx" \
               -Pandroid.injected.signing.store.password="android" \
-              -Pandroid.injected.signing.key.alias="androiddebugkey" \
+              -Pandroid.injected.signing.key.alias="1" \
               -Pandroid.injected.signing.key.password="android"
+
 
       - name: Rename APKs with version
         run: |

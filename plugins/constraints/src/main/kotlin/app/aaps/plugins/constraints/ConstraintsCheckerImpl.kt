@@ -20,96 +20,48 @@ class ConstraintsCheckerImpl @Inject constructor(
     override fun isLoopInvocationAllowed(): Constraint<Boolean> = isLoopInvocationAllowed(ConstraintObject(true, aapsLogger))
 
     override fun isLoopInvocationAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isLoopInvocationAllowed(value)
-        }
         return value
     }
 
     override fun isClosedLoopAllowed(): Constraint<Boolean> = isClosedLoopAllowed(ConstraintObject(true, aapsLogger))
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isClosedLoopAllowed(value)
-        }
         return value
     }
 
     override fun isLgsForced(): Constraint<Boolean> = isLgsForced(ConstraintObject(false, aapsLogger))
 
     override fun isLgsForced(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isLgsForced(value)
-        }
         return value
     }
 
     override fun isAutosensModeEnabled(): Constraint<Boolean> = isAutosensModeEnabled(ConstraintObject(true, aapsLogger))
 
     override fun isAutosensModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isAutosensModeEnabled(value)
-        }
         return value
     }
 
     override fun isSMBModeEnabled(): Constraint<Boolean> = isSMBModeEnabled(ConstraintObject(true, aapsLogger))
 
     override fun isSMBModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isSMBModeEnabled(value)
-        }
         return value
     }
 
     override fun isUAMEnabled(): Constraint<Boolean> = isUAMEnabled(ConstraintObject(true, aapsLogger))
 
     override fun isUAMEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isUAMEnabled(value)
-        }
         return value
     }
 
     override fun isAdvancedFilteringEnabled(): Constraint<Boolean> = isAdvancedFilteringEnabled(ConstraintObject(true, aapsLogger))
 
     override fun isAdvancedFilteringEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isAdvancedFilteringEnabled(value)
-        }
         return value
     }
 
     override fun isSuperBolusEnabled(): Constraint<Boolean> = isSuperBolusEnabled(ConstraintObject(true, aapsLogger))
 
     override fun isSuperBolusEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isSuperBolusEnabled(value)
-        }
         return value
     }
 
@@ -176,12 +128,6 @@ class ConstraintsCheckerImpl @Inject constructor(
     }
 
     override fun isAutomationEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
-        val constraintsPlugins = activePlugin.getSpecificPluginsListByInterface(PluginConstraints::class.java)
-        for (p in constraintsPlugins) {
-            val constraint = p as PluginConstraints
-            if (!p.isEnabled()) continue
-            constraint.isAutomationEnabled(value)
-        }
         return value
     }
 

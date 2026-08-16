@@ -9,6 +9,6 @@ enum class ObjectivesBooleanComposedKey(
     override val exportable: Boolean = true
 ) : BooleanComposedNonPreferenceKey {
 
-    AnsweredExam("ExamTask_", "%s", false),
-    AnsweredUi("UITask_", "%s", false),
+    AnsweredExam("ExamTask_", "%s", true),
+    AnsweredUi("UITask_", "%s", true),
 }

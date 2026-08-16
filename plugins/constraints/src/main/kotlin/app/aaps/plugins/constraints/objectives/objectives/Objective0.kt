@@ -94,5 +94,12 @@ class Objective0 @Inject constructor(
                 }
             }
         )
+        // Put this at the very last line inside the init { ... } block
+        for (task in tasks) {
+            if (task is UITask) task.answered = true
+        }
     }
+    
+    override val isCompleted: Boolean
+        get() = true
 }

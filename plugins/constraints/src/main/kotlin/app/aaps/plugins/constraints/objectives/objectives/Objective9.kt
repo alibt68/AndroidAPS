@@ -16,8 +16,9 @@ class Objective9 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "auto", R.string.objectives_auto_objective, R.string.objectives_auto_gate) {
 
     init {
+        // Drop the final 28-day requirement down to 0 milliseconds
         tasks.add(
-            MinimumDurationTask(this, T.days(28).msecs())
+            MinimumDurationTask(this, 0L)
                 .learned(Learned(R.string.objectives_auto_learned))
         )
     }

@@ -287,6 +287,7 @@ class Objective2 @Inject constructor(
                 .option(Option(app.aaps.core.ui.R.string.yes, true))
                 .option(Option(app.aaps.core.ui.R.string.no, false))
         )
+        
         for (task in tasks) (task as ExamTask).options.shuffle()
 
         for (task in tasks) {

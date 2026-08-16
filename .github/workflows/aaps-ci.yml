@@ -287,8 +287,8 @@ jobs:
       - name: Upload APKs directly to GitHub
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
-          path: final_artifacts/
+          name: apps-dev-build
+          path: app/build/outputs/apk/**/
 
 
   # Configuration: Threshold-based cleanup

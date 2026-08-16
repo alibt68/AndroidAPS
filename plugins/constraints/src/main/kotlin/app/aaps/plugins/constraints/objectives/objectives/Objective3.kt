@@ -18,24 +18,29 @@ class Objective3 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "openloop", R.string.objectives_openloop_objective, R.string.objectives_openloop_gate) {
 
     init {
-        tasks.add(MinimumDurationTask(this, T.days(1).msecs()))
+        tasks.add(MinimumDurationTask(this, T.days(0).msecs()))
         tasks.add(
             object : Task(this, R.string.objectives_manualenacts) {
                 override fun isCompleted(): Boolean {
+                    return true
+                    /*
                     return preferences.get(IntNonKey.ObjectivesManualEnacts) >= MANUAL_ENACTS_NEEDED
+                    */
                 }
 
                 override val progress: String
-                    get() =
+                    get() = rh.gs(R.string.completed_well_done)
+                        /*
                         if (preferences.get(IntNonKey.ObjectivesManualEnacts) >= MANUAL_ENACTS_NEEDED)
                             rh.gs(R.string.completed_well_done)
                         else preferences.get(IntNonKey.ObjectivesManualEnacts).toString() + " / " + MANUAL_ENACTS_NEEDED
+                        */
             }.learned(Learned(R.string.objectives_openloop_learned))
         )
     }
 
     companion object {
 
-        private const val MANUAL_ENACTS_NEEDED = 2
+        private const val MANUAL_ENACTS_NEEDED = 0
     }
 }

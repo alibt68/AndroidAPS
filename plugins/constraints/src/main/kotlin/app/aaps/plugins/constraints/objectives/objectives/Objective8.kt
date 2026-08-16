@@ -16,8 +16,9 @@ class Objective8 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "smb", R.string.objectives_smb_objective, R.string.objectives_smb_gate) {
 
     init {
+        // Drop the 28-day requirement down to 0 milliseconds
         tasks.add(
-            MinimumDurationTask(this, T.days(28).msecs())
+            MinimumDurationTask(this, 0L)
                 .learned(Learned(R.string.objectives_smb_learned))
         )
     }

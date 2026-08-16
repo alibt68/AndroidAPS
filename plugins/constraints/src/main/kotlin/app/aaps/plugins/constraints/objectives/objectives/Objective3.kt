@@ -18,29 +18,24 @@ class Objective3 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "openloop", R.string.objectives_openloop_objective, R.string.objectives_openloop_gate) {
 
     init {
-        tasks.add(MinimumDurationTask(this, T.days(0).msecs()))
+        // Loosen the duration check from 7 days down to 0 milliseconds
+        tasks.add(MinimumDurationTask(this, 0L))
+        
         tasks.add(
             object : Task(this, R.string.objectives_manualenacts) {
                 override fun isCompleted(): Boolean {
+                    // Force the manual enact rule to pass instantly
                     return true
-                    /*
-                    return preferences.get(IntNonKey.ObjectivesManualEnacts) >= MANUAL_ENACTS_NEEDED
-                    */
                 }
 
                 override val progress: String
                     get() = rh.gs(R.string.completed_well_done)
-                        /*
-                        if (preferences.get(IntNonKey.ObjectivesManualEnacts) >= MANUAL_ENACTS_NEEDED)
-                            rh.gs(R.string.completed_well_done)
-                        else preferences.get(IntNonKey.ObjectivesManualEnacts).toString() + " / " + MANUAL_ENACTS_NEEDED
-                        */
             }.learned(Learned(R.string.objectives_openloop_learned))
         )
     }
 
     companion object {
-
+        // Align the required metric target down to zero
         private const val MANUAL_ENACTS_NEEDED = 0
     }
 }

@@ -23,48 +23,27 @@ abstract class Objective(
     @StringRes val objective: Int,
     @StringRes val gate: Int
 ) {
-    var startedOn: Long = 0
-        get() = preferences.get(ObjectivesLongComposedKey.Started, spName)
-        set(value) {
-            field = value
-            preferences.put(ObjectivesLongComposedKey.Started, spName, value = value)
-        }
-    var accomplishedOn: Long = 0
-        get() {
-            var value = preferences.get(ObjectivesLongComposedKey.Accomplished, spName)
-            if (value - dateUtil.now() > T.hours(3).msecs() || startedOn - dateUtil.now() > T.hours(3).msecs()) { // more than 3 hours in the future
-                startedOn = 0
-                accomplishedOn = 0
-                value = 0
-            }
-            return value
-        }
-        set(value) {
-            field = value
-            preferences.put(ObjectivesLongComposedKey.Accomplished, spName, value = value)
-        }
+    var startedOn: Long
+        get() = 1L
+        set(value) {}
+        
+    var accomplishedOn: Long
+        get() = 1L
+        set(value) {}
 
     var tasks: MutableList<Task> = ArrayList()
 
     val isCompleted: Boolean
-        get() {
-            for (task in tasks) {
-                if (!task.shouldBeIgnored() && !task.isCompleted()) return false
-            }
-            return true
-        }
+        get() = true
 
     fun isCompleted(trueTime: Long): Boolean {
-        for (task in tasks) {
-            if (!task.shouldBeIgnored() && !task.isCompleted(trueTime)) return false
-        }
         return true
     }
 
     val isAccomplished: Boolean
-        get() = accomplishedOn != 0L && accomplishedOn < dateUtil.now()
+        get() = true
     val isStarted: Boolean
-        get() = startedOn != 0L
+        get() = true
 
     abstract inner class Task(var objective: Objective, @StringRes val task: Int) {
 

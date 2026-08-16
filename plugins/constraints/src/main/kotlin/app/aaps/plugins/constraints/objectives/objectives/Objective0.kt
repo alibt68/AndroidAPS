@@ -83,6 +83,11 @@ class Objective0 @Inject constructor(
         })
         tasks.add(
             UITask(this, R.string.verify_master_password, "master_password") { context, task, callback ->
+                // Force the UI task to mark itself as answered instantly
+                task.answered = true
+                callback.run()
+                
+                /*
                 if (preferences.get(StringKey.ProtectionMasterPassword) == "") {
                     ToastUtils.errorToast(context, app.aaps.core.ui.R.string.master_password_not_set)
                 } else {
@@ -92,6 +97,7 @@ class Objective0 @Inject constructor(
                                                     callback.run()
                                                 })
                 }
+                */
             }
         )
         // Put this at the very last line inside the init { ... } block

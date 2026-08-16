@@ -284,10 +284,10 @@ jobs:
           echo "📁 Collected Signed Debug APK files for download:"
           ls -l final_artifacts/
 
-      - name: Upload APKs directly to GitHub
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: apps-dev-build
+          name: AAPS-Dev-Build
           path: app/build/outputs/apk/**/
 
 

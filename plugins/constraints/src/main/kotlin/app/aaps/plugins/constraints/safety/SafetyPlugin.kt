@@ -74,13 +74,6 @@ class SafetyPlugin @Inject constructor(
     }
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
-        // Force the constraint to always be explicitly authorized
-        value.set(true, "Developer Mode Override", this)
-    
-        // Return it instantly, bypassing the dev branch check and extended bolus limits
-        return value
-        
-        /* Original code safely isolated below:
         if (!config.isEngineeringModeOrRelease()) {
             if (value.value()) {
                 uiInteraction.addNotification(Notification.TOAST_ALARM, rh.gs(R.string.closed_loop_disabled_on_dev_branch), Notification.NORMAL)
@@ -92,7 +85,6 @@ class SafetyPlugin @Inject constructor(
             value.set(false, rh.gs(R.string.closed_loop_disabled_with_eb), this)
         }
         return value
-        */
     }
 
     override fun isSMBModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {

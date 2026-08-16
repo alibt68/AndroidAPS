@@ -61,4 +61,7 @@ class Objective1 @Inject constructor(
                 .learned(Learned(R.string.objectives_usage_learned))
         )
     }
+    
+    override val isCompleted: Boolean
+        get() = true
 }

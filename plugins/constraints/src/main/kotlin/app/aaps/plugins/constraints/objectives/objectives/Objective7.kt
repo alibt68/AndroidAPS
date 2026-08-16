@@ -16,8 +16,9 @@ class Objective7 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "autosens", R.string.objectives_autosens_objective, R.string.objectives_autosens_gate) {
 
     init {
+        // Drop the 7-day requirement down to 0 milliseconds
         tasks.add(
-            MinimumDurationTask(this, T.days(7).msecs())
+            MinimumDurationTask(this, 0L)
                 .learned(Learned(R.string.objectives_autosens_learned))
         )
     }

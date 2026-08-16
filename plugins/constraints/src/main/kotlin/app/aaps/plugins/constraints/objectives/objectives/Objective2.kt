@@ -290,7 +290,7 @@ class Objective2 @Inject constructor(
         for (task in tasks) (task as ExamTask).options.shuffle()
 
         for (task in tasks) {
-            if (!task.isCompleted()) accomplishedOn = 0
+            (task as ExamTask).answered = true
         }
     }
 }

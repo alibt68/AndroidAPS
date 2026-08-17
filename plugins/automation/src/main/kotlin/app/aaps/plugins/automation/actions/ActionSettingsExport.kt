@@ -82,7 +82,6 @@ class ActionSettingsExport(injector: HasAndroidInjector) : Action(injector) {
                     notification = NotificationUserMessage(exportResultMessage, Notification.INFO) // INFO -> e.g. color GREEN
                 }
                 // Execute settings export, then notify user
-                val passwordToUse = ""
                 if (!importExportPrefs.exportSharedPreferencesNonInteractive(context, password)) {
                     // :-( Export failed (see logfile!?)
                     aapsLogger.error(LTag.AUTOMATION, "ERROR: exportSharedPreferencesNonInteractive() failed to export settings")

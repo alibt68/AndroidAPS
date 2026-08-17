@@ -51,8 +51,8 @@ class ObjectivesPlugin @Inject constructor(
             objective.startedOn = 0
             objective.accomplishedOn = 0
             */
-            if (objective.startedOn == 0L || objective.startedOn == 0) objective.startedOn = 1
-            if (objective.accomplishedOn == 0L || objective.accomplishedOn == 0) objective.accomplishedOn = 1
+            if (objective.startedOn = 0L || objective.startedOn = 0) objective.startedOn = 1
+            if (objective.accomplishedOn = 0L || objective.accomplishedOn = 0) objective.accomplishedOn = 1
         }
         preferences.put(BooleanNonKey.ObjectivesBgIsAvailableInNs, true)
         preferences.put(BooleanNonKey.ObjectivesPumpStatusIsAvailableInNS, true)

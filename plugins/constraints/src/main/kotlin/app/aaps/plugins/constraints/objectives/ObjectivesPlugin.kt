@@ -47,34 +47,27 @@ class ObjectivesPlugin @Inject constructor(
 
     fun reset() {
         for (objective in objectives) {
-            /*
             objective.startedOn = 0
             objective.accomplishedOn = 0
-            */
-            if (objective.startedOn = 0L || objective.startedOn = 0) objective.startedOn = 1
-            if (objective.accomplishedOn = 0L || objective.accomplishedOn = 0) objective.accomplishedOn = 1
         }
-        preferences.put(BooleanNonKey.ObjectivesBgIsAvailableInNs, true)
-        preferences.put(BooleanNonKey.ObjectivesPumpStatusIsAvailableInNS, true)
-        preferences.put(IntNonKey.ObjectivesManualEnacts, 25)
-        preferences.put(BooleanNonKey.ObjectivesProfileSwitchUsed, true)
-        preferences.put(BooleanNonKey.ObjectivesDisconnectUsed, true)
-        preferences.put(BooleanNonKey.ObjectivesReconnectUsed, true)
-        preferences.put(BooleanNonKey.ObjectivesTempTargetUsed, true)
-        preferences.put(BooleanNonKey.ObjectivesActionsUsed, true)
-        preferences.put(BooleanNonKey.ObjectivesLoopUsed, true)
-        preferences.put(BooleanNonKey.ObjectivesScaleUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesBgIsAvailableInNs, false)
+        preferences.put(BooleanNonKey.ObjectivesPumpStatusIsAvailableInNS, false)
+        preferences.put(IntNonKey.ObjectivesManualEnacts, 0)
+        preferences.put(BooleanNonKey.ObjectivesProfileSwitchUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesDisconnectUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesReconnectUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesTempTargetUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesActionsUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesLoopUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesScaleUsed, false)
     }
 
     fun allPriorAccomplished(position: Int): Boolean {
-        /*
         var accomplished = true
         for (i in 0 until position) {
             accomplished = accomplished && objectives[i].isAccomplished
         }
         return accomplished
-        */
-        return true
     }
 
     /**
@@ -82,72 +75,52 @@ class ObjectivesPlugin @Inject constructor(
      */
     override fun isLoopInvocationAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         // Check if initialized
-        /*
         if (objectives.isEmpty()) return value
         if (!objectives[FIRST_OBJECTIVE].isStarted)
             value.set(false, rh.gs(R.string.objectivenotstarted, FIRST_OBJECTIVE + 1), this)
-        */
-        value.set(true)
         return value
     }
 
     override fun isLgsForced(value: Constraint<Boolean>): Constraint<Boolean> {
         // Check if initialized
-        /*
         if (objectives.isEmpty()) return value
         if (objectives[LGS_OBJECTIVE].isStarted && !objectives[LGS_OBJECTIVE].isAccomplished)
             value.set(true, rh.gs(R.string.objectivenotfinished, LGS_OBJECTIVE + 1), this)
-        */
-        value.set(true)
         return value
     }
 
     override fun isClosedLoopAllowed(value: Constraint<Boolean>): Constraint<Boolean> {
         // Check if initialized
-        /*
         if (objectives.isEmpty()) return value
         if (!objectives[CLOSED_LOOP_OBJECTIVE].isStarted)
             value.set(false, rh.gs(R.string.objectivenotstarted, CLOSED_LOOP_OBJECTIVE + 1), this)
-        */
-        value.set(true)
         return value
     }
 
     override fun isAutosensModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         // Check if initialized
-        /*
         if (objectives.isEmpty()) return value
         if (!objectives[AUTOSENS_OBJECTIVE].isStarted)
             value.set(false, rh.gs(R.string.objectivenotstarted, AUTOSENS_OBJECTIVE + 1), this)
-        */
-        value.set(true)
         return value
     }
 
     override fun isSMBModeEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         // Check if initialized
-        /*
         if (objectives.isEmpty()) return value
         if (!objectives[SMB_OBJECTIVE].isStarted)
             value.set(false, rh.gs(R.string.objectivenotstarted, SMB_OBJECTIVE + 1), this)
-        */
-        value.set(true)
         return value
     }
 
     override fun isAutomationEnabled(value: Constraint<Boolean>): Constraint<Boolean> {
         // Check if initialized
-        /*
         if (objectives.isEmpty()) return value
         if (!objectives[AUTO_OBJECTIVE].isStarted)
             value.set(false, rh.gs(R.string.objectivenotstarted, AUTO_OBJECTIVE + 1), this)
-        */
-        value.set(true)
         return value
     }
 
-    /*
     override fun isAccomplished(index: Int) = objectives[index].isAccomplished
     override fun isStarted(index: Int): Boolean = objectives[index].isStarted
-    */
 }

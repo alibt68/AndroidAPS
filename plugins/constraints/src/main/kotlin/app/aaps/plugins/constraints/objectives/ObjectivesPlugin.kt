@@ -34,9 +34,7 @@ class ObjectivesPlugin @Inject constructor(
     val objectives: List<@JvmSuppressWildcards Objective>
 ) : PluginBaseWithPreferences(
     pluginDescription = PluginDescription()
-        /*
         .mainType(PluginType.CONSTRAINTS)
-        */
         .fragmentClass(ObjectivesFragment::class.qualifiedName)
         .pluginIcon(app.aaps.core.ui.R.drawable.ic_graduation)
         .pluginName(app.aaps.core.ui.R.string.objectives)

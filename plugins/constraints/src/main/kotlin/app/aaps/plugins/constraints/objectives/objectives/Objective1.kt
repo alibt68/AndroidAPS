@@ -66,7 +66,8 @@ class Objective1 @Inject constructor(
             }
         }
     }
-    
+    /*
     override val isCompleted: Boolean
         get() = true
+    */
 }

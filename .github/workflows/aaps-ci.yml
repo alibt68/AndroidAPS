@@ -9,6 +9,8 @@ on:
         default: '3.4.2.6'
         type: choice
         options:
+          # ── Custom ──────────────────────────────────────
+          - my-master
           # ── 3.4.x (JDK 21) ──────────────────────────────
           - 3.4.2.6
           - 3.4.2.4
@@ -194,6 +196,7 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch selected tag from upstream
+        if: github.event.inputs.tagName != 'my-master'
         run: |
           git remote add upstream https://github.com/nightscout/AndroidAPS.git || true
           git fetch upstream refs/tags/${{ github.event.inputs.tagName }}:refs/tags/${{ github.event.inputs.tagName }}
@@ -215,9 +218,16 @@ jobs:
           echo "ℹ️ Tag $TAG → JDK $JAVA_VERSION (from jdk-map.json)"
 
       - name: Switch to selected tag
+        if: github.event.inputs.tagName != 'my-master'
         run: |
           git checkout refs/tags/${{ github.event.inputs.tagName }}
           echo "✅ Checked out tag ${{ github.event.inputs.tagName }}"
+
+      - name: Confirm building own master branch
+        if: github.event.inputs.tagName == 'my-master'
+        run: |
+          echo "ℹ️ Skipping upstream tag checkout — building your own master branch as-is."
+          echo "Current HEAD: $(git rev-parse --abbrev-ref HEAD) @ $(git rev-parse --short HEAD)"
 
       - name: Set BUILD_VARIANT
         run: |

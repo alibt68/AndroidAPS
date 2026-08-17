@@ -47,27 +47,34 @@ class ObjectivesPlugin @Inject constructor(
 
     fun reset() {
         for (objective in objectives) {
+            /*
             objective.startedOn = 0
             objective.accomplishedOn = 0
+            */
+            if (objective.startedOn == 0L || objective.startedOn == 0) objective.startedOn = 1
+            if (objective.accomplishedOn == 0L || objective.accomplishedOn == 0) objective.accomplishedOn = 1
         }
-        preferences.put(BooleanNonKey.ObjectivesBgIsAvailableInNs, false)
-        preferences.put(BooleanNonKey.ObjectivesPumpStatusIsAvailableInNS, false)
-        preferences.put(IntNonKey.ObjectivesManualEnacts, 0)
-        preferences.put(BooleanNonKey.ObjectivesProfileSwitchUsed, false)
-        preferences.put(BooleanNonKey.ObjectivesDisconnectUsed, false)
-        preferences.put(BooleanNonKey.ObjectivesReconnectUsed, false)
-        preferences.put(BooleanNonKey.ObjectivesTempTargetUsed, false)
-        preferences.put(BooleanNonKey.ObjectivesActionsUsed, false)
-        preferences.put(BooleanNonKey.ObjectivesLoopUsed, false)
-        preferences.put(BooleanNonKey.ObjectivesScaleUsed, false)
+        preferences.put(BooleanNonKey.ObjectivesBgIsAvailableInNs, true)
+        preferences.put(BooleanNonKey.ObjectivesPumpStatusIsAvailableInNS, true)
+        preferences.put(IntNonKey.ObjectivesManualEnacts, 25)
+        preferences.put(BooleanNonKey.ObjectivesProfileSwitchUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesDisconnectUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesReconnectUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesTempTargetUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesActionsUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesLoopUsed, true)
+        preferences.put(BooleanNonKey.ObjectivesScaleUsed, true)
     }
 
     fun allPriorAccomplished(position: Int): Boolean {
+        /*
         var accomplished = true
         for (i in 0 until position) {
             accomplished = accomplished && objectives[i].isAccomplished
         }
         return accomplished
+        */
+        return true
     }
 
     /**

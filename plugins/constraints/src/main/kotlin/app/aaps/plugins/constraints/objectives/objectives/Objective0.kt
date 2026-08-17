@@ -105,7 +105,8 @@ class Objective0 @Inject constructor(
             if (task is UITask) task.answered = true
         }
     }
-    
+    /*
     override val isCompleted: Boolean
         get() = true
+    */
 }
